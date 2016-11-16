@@ -1,0 +1,30 @@
+
+$topbarHeight : 60px;
+
+/*设置顶部菜单栏高度*/
+.topbar{
+	height: $topbarHeight;
+	/*flex: 1;*/
+}
+
+
+/*设置内容区绝对定位*/
+.content{
+	/*flex: 1;*/
+/*	margin-top: $topbarHeight;*/
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left:0;
+	top:$topbarHeight;
+}
+
+.right-wrap{
+	display: block;
+	position: absolute;
+	bottom: 0;
+	right:0;
+	left:240px;
+	background-color: blue;
+	top:$topbarHeight;
+}

@@ -1,6 +1,6 @@
 import React  , {Component}  from 'react' ;
 import { Menu, Icon , Switch  } from 'antd';
-import './sider.css';
+import './sider.scss';
 import menuIcon from '../resources/images/menu.png';
 import donateIcon from '../resources/images/donate.png';
 import scoreIcon from '../resources/images/score.png';
@@ -26,6 +26,11 @@ export default class Sider extends Component {
 		this.onOpenChange=this.onOpenChange.bind(this);
 		this.onMenuCollapse = this.onMenuCollapse.bind(this);
 	}
+
+	componentDidMount() {
+		var  data = require('json!../resources/data/menu.json');
+		console.log(data);
+	}	
 
 	handleClick(e) {
 		this.setState({
@@ -70,7 +75,7 @@ export default class Sider extends Component {
 	      	  	<img src={menuIcon} onClick= {this.onMenuCollapse} className={this.state.collapse ? '' : 'rotate'}/>
 	      	  </div>
 	        <Menu
-	          style={{ width: '100%' , height : '100%' }}
+	          // style={{ height : '100%' }}
 	          selectedKeys={[this.state.current]}
 	          onOpenChange={this.onOpenChange}
 	          mode={this.state.collapse ? 'vertical' : 'inline'}
@@ -117,7 +122,7 @@ export default class Sider extends Component {
 	            <Menu.Item key="23">Option 11</Menu.Item>
 	            <Menu.Item key="24">Option 12</Menu.Item>
 	          </SubMenu>
-	          <SubMenu key="sub8" title={<span className="menu-title"><img className="icon" src={accountIcon} /><span>账户管理</span></span>}>
+	          <SubMenu key="sub8" title={<span className="menu-title"><img className="icon" src={require('../resources/images/account.png')} /><span>账户管理</span></span>}>
 	            <Menu.Item key="25">Option 9</Menu.Item>
 	            <Menu.Item key="26">Option 10</Menu.Item>
 	            <Menu.Item key="27">Option 11</Menu.Item>

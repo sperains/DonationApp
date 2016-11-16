@@ -6,10 +6,15 @@ import AddTodo from '../components/AddTodo';
 import TopBar from '../components/TopBar';
 import Sider from '../components/Sider';
 import './app.css';
-import './main.css';
+import './main.scss';
 
 
 class Main extends Component{
+
+    componentDidMount() {
+        // flexibility(document.documentElement);
+    }
+
     render(){
         const { dispatch } = this.props;
         return (
