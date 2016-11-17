@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { addTodo , completeTodo , setVisibilityFilter , VisibilityFilters} from '../actions/actions';
 import AddTodo from '../components/AddTodo';
 import TopBar from '../components/TopBar';
-import Sider from '../components/Sider';
+import Sider from '../components/singlemenu/SingleMenu';
+import Active from '../components/active/Active';
 import './app.css';
 import './main.scss';
 
@@ -22,7 +23,9 @@ class Main extends Component{
                 <TopBar />
                 <div className="content">
                     <Sider />
-                    <div className="right-wrap">dasdasdasd</div>
+                    <div className="right-wrap">
+                        <Active />
+                    </div>
                 </div>
             </div>
         )
