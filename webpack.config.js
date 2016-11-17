@@ -2,7 +2,8 @@
  * Created by Rains
  * on 2016-10-20.
  */
- var path = require('path');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
 var webpack = require('webpack');
 // var WebpackDevServer = require("webpack-dev-server");
 
@@ -13,6 +14,17 @@ var webpack = require('webpack');
 
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+// let theme = {
+//     // "@font-size-heading":"20px",
+//     // "@font-size-input-label":"28px",
+//     // "@h-spacing-lg":"0px",
+//     // "@font-size-popup-title":"24px",
+//     // "@font-size-popup-selected":"36px",
+// };
+
+// const lessLoader = 'style!css!less?{"modifyVars":'+ JSON.stringify(theme)+'}';
+
+
 const localHost = '192.168.31.173';
 const port = 8088;
 
@@ -21,6 +33,7 @@ var isProduction = function () {
 };
 
 module.exports = {
+    // devtool: 'source-map',
     entry: path.resolve(__dirname, 'app/entry.js'),
     output: {
         path: path.join(__dirname, 'dist'),
@@ -95,14 +108,21 @@ module.exports = {
                                 test: /\.(png|jpg|gif)$/,
                                 loader: 'url-loader?limit=8192' // 这里的 limit=8192 表示用 base64 编码 <= ８K 的图像 大于这个尺寸的图片会拷贝到build目录下
 		},
+                            // {
+                            //     test: /\.less$/,
+                            //     loader: lessLoader
+                            // },
 		{
                                 test: /\.css$/,
-                                loader: 'style!css'
+                                loader: 'style!css!postcss'
 		},
                             {
                                 test: /\.scss$/,
-                                loaders: ["style", 'css', "sass"]
+                                loaders: ["style", "css", "sass" , "postcss"]
                             }
 	]
-        }
+        },
+        postcss: function () {
+                    return [require('autoprefixer'), require('precss')];
+                }
 }

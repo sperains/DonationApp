@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { addTodo , completeTodo , setVisibilityFilter , VisibilityFilters} from '../actions/actions';
 import AddTodo from '../components/AddTodo';
 import TopBar from '../components/TopBar';
-import Sider from '../components/Sider';
+import Sider from '../components/singlemenu/SingleMenu';
 import './app.css';
 import './main.scss';
 

@@ -1,0 +1,108 @@
+$menuItemHeight:60px;
+
+
+.sider-wrap{
+	height: 100%;
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+
+	/*菜单栏顶部收缩按钮背景高度及颜色*/
+	.collapse-menu-wrap{
+		height: 60px;
+		background-color: #b3b3c7;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+
+		div {
+			height: 20px;
+			width: 20px;
+			background-image: url('../../resources/images/menu.png');
+			background-size: cover;
+			cursor: pointer;
+		}
+
+		.collapse{
+			transition: all 0.2s;
+			transform:rotate(90deg);
+			-ms-transform:rotate(90deg); 	/* IE 9 */
+			-moz-transform:rotate(90deg); 	/* Firefox */
+			-webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+			-o-transform:rotate(90deg); 	
+		}
+	}
+
+	.menu-list{
+		flex: 1;
+		background-image: url(../../resources/images/menubg.png);
+
+		.menu-item{
+			height: $menuItemHeight;
+			line-height: $menuItemHeight;
+			font-size: 18px;
+			color: #374260;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+
+			.img{
+				height: 20px;
+				width: 20px;
+				position: absolute;
+				left: 20px;
+			}
+
+			.collapse{
+				position: absolute;
+				left:  10px ;
+			}
+
+			span {
+				margin-left: 60px;
+			}
+		}
+
+		.menu-item:hover{
+			cursor: pointer;
+			border-left: solid 4px #374260 ;
+		}
+
+		.donate{
+			background-image: url(../../resources/images/donate.png);
+		}
+
+		.account{
+			background-image: url(../../resources/images/account.png);
+		}
+
+		.activity{
+			background-image: url(../../resources/images/activity.png);
+		}
+
+		.life{
+			background-image: url(../../resources/images/life.png);
+		}
+
+		.member{
+			background-image: url(../../resources/images/member.png);
+		}
+
+		.number{
+			background-image: url(../../resources/images/number.png);
+		}
+
+		.score{
+			background-image: url(../../resources/images/score.png);
+		}
+	}
+}
+
+.sider-wrap-collapse{
+	width: 40px;
+
+	span{
+		visibility: hidden;
+	}
+}
