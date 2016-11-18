@@ -19,37 +19,69 @@
 	.nav{
 		display: flex;
 		flex-direction: row;
+		font-size: 16px;
+		color: #fff;
+
+
+		.message{
+			width: 120px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			
+			span{
+				margin-right: 20px;
+			}
+		}
+
+
+		.info{
+			width: auto;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			cursor: pointer;
+			padding-right: 40px;
+
+			.user{
+				margin-right: 20px;
+			}
+
+			.logout{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+
+				.logout-img{
+					height: 16px;
+					width: 16px;
+					margin-left: 5px;
+					background-image: url(../resources/images/logout.png);
+				}
+			}
+
+			
+		}
 	}
-}
 
-.topbar .message{
-	width: 80px;
-	border-left: solid 1px #555;
-	border-right: solid 1px #555; 
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 }
 
 
-.topbar .info{
-	width: 80px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	cursor: pointer;
-}
 
 
 /*顶部条   微图标*/
 .badge-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
+  width: 22px;
+  height: 16px;
   display: inline-block;
   background-image: url(../resources/images/mail.png);
-  background-size: cover;
+
+  	
 }
+
+.ant-badge-dot{
+		left : 24px;
+ }
 
 /*顶部右边下拉菜单*/
 .ant-dropdown-link{

@@ -1,6 +1,8 @@
 import React, { Component } from 'react' ;
 import './active.scss';
 import DataStore from '../../utils/DataStore.js' ;
+import { browserHistory } from 'react-router';
+
 export default class Active extends Component{
 
 	constructor(props) {
@@ -9,19 +11,20 @@ export default class Active extends Component{
 			activeList : []
 		}
 		this.onReleaseStateChange = this.onReleaseStateChange.bind(this);
+		this.onNewActiveClick = this.onNewActiveClick.bind(this);
 	}
 
 	componentDidMount() {
 		
 		var me = this ;
-		DataStore.getActiveList().then( (response) => {
-			console.log(response)
+		DataStore.getActiveList().then( (data) => {
 			me.setState({
-				activeList : response
+				activeList : data
 			})
 		});
 	}
 
+	//切换发布状态 
 	onReleaseStateChange(index){
 		let activeList = this.state.activeList;
 
@@ -36,12 +39,16 @@ export default class Active extends Component{
 		});
 	}
 
+	onNewActiveClick(){
+		browserHistory.push('/active-new');
+	}
+
 	render(){
 		return (
 			<div className="active-wrap">
 				<div className="active-topbar">
 					<span>喜悦活动</span>
-					<div className="new"></div>
+					<div className="new" onClick={this.onNewActiveClick}></div>
 				</div>
 				<div className="active-content">
 

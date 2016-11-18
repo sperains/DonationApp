@@ -16,10 +16,10 @@ const menu = (
 					<span >设置</span>
 				</Menu.Item>
 				<Menu.Item key="usercenter">
-				个人中心
+					<span >个人中心</span>
 				</Menu.Item>
 				<Menu.Item key="logout">
-				注销
+					<span >注销</span>
 				</Menu.Item>
 			</Menu>
 		);
@@ -53,18 +53,20 @@ export default class TopBar extends Component {
 					<div className="logo"></div>
 					<div className="nav">
 						<div className="message" onClick={this.onMessageClick}>
+							<span>消息</span>
 							<a href="#">
-								<Badge count={this.state.messageCount} overflowCount={9} dot={false}>
+								<Badge count={this.state.messageCount} overflowCount={9} dot={true}>
 									<span className="badge-icon" />
 								</Badge>
 							</a>
 						</div>
 						<div className="info">
-							<Dropdown overlay={menu} trigger={['click']}>
-								<div className="ant-dropdown-link" href="#">
-							      		<Icon type="down" />
-								</div>
-							</Dropdown>
+							<span className="user">Rains</span>
+							<div className="logout">
+								<span>注销</span>
+								<div className="logout-img"></div>
+							</div>
+							
 						</div>
 					</div>
 				</div>

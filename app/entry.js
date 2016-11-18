@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 import  {Router , Route , IndexRoute , Redirect , browserHistory} from 'react-router';
 import Main from './containers/Main';
 import Active from './components/active/Active';
+import NewActive from './components/active/newactive/NewActive';
 import store from './store.js';
 
 
@@ -21,6 +22,7 @@ ReactDOM.render(
     		<Route  path="/" component={Main}>
     			<IndexRoute component={Active}/>
     			<Route path="/active" component={Active}/>
+    			<Route path="/active-new" component={NewActive} />
     		</Route>
     	</Router>
     </Provider>,
