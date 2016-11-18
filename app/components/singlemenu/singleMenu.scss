@@ -41,7 +41,8 @@ $menuItemHeight:60px;
 	.menu-list{
 		flex: 1;
 		background-image: url(../../resources/images/menubg.png);
-
+		
+		/*当前菜单样式*/
 		.active{
 			border-left: solid 4px #374260 ;
 			font-weight: bold;
@@ -102,7 +103,9 @@ $menuItemHeight:60px;
 				margin-left: 60px;
 			}
 		}
+		
 
+		/*鼠标滑过菜单时的样式*/
 		.menu-item:hover{
 			cursor: pointer;
 			border-left: solid 4px #374260 ;
@@ -139,7 +142,9 @@ $menuItemHeight:60px;
 				background-image: url(../../resources/images/score-active.png);
 			}
 		}
+		
 
+		/*菜单小图标*/
 		.donate{
 			background-image: url(../../resources/images/donate.png);
 		}
@@ -172,4 +177,13 @@ $menuItemHeight:60px;
 
 .sider-wrap-collapse{
 	width: 40px;
+
+	.menu-list .menu-item{
+		border: none;
+	}
+
+	.menu-list .menu-item:hover{
+		border: none;
+	}
+	
 }

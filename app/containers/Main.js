@@ -24,7 +24,7 @@ class Main extends Component{
                 <div className="content">
                     <Sider />
                     <div className="right-wrap">
-                        <Active />
+                        {this.props.children}       
                     </div>
                 </div>
             </div>

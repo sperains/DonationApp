@@ -25,8 +25,6 @@ export default class SingleMenu extends Component{
 		this.setState({
 			collapse : !this.state.collapse
 		})
-
-		console.log(this.state.collapse);
 	}
 
 	onMenuClick(index){
