@@ -12,6 +12,7 @@ export default class Active extends Component{
 		}
 		this.onReleaseStateChange = this.onReleaseStateChange.bind(this);
 		this.onNewActiveClick = this.onNewActiveClick.bind(this);
+		this.onActiveDetailClick = this.onActiveDetailClick.bind(this);
 	}
 
 	componentDidMount() {
@@ -41,6 +42,17 @@ export default class Active extends Component{
 
 	onNewActiveClick(){
 		browserHistory.push('/active-new');
+	}
+
+	onActiveDetailClick(index){
+		let title = this.state.activeList[index].mainTitle;
+		console.log(title)
+		browserHistory.push({
+			pathname : '/active-detail',
+			state : {
+				title : title
+			}
+		});
 	}
 
 	render(){
@@ -74,7 +86,7 @@ export default class Active extends Component{
 									<div className="options">
 										<span className={active.isOpenLimit ? 'apply' : 'apply hidden'}>({active.applyPersonCount} / 1000)</span>
 										<div>
-											<span>报名详情</span>
+											<span onClick={ () => this.onActiveDetailClick(index)}>报名详情</span>
 											<span className="edit">编辑</span>
 											<span className="del">删除</span>
 										</div>

@@ -26,67 +26,7 @@ Mock.mock(AppConfig.ApiConfig.getBarginInfo,{
 
 Mock.mock(AppConfig.ApiConfig.getActiveList,{
     'status' : 1 ,
-    'data' : [
-        {
-            'key' : '@string',
-            'createTime' : MockRandom.date('yyyy年MM月dd日'),
-            'activeTime' : MockRandom.date('yyyy年MM月dd日'),
-            'release|1' : true,
-            'mainTitle' : MockRandom.csentence(2),
-            'subTitle' : MockRandom.csentence(20),
-            'address' : MockRandom.province() + MockRandom.city() + MockRandom.county() + 'XX大酒店2楼',
-            'isOpenLimit|1' : true,
-            'applyPersonCount' : MockRandom.natural(0, 1000),
-            'logo' : MockRandom.dataImage()
-        },
-        {
-            'key' : '@string',
-            'createTime' : MockRandom.date('yyyy年MM月dd日'),
-            'activeTime' : MockRandom.date('yyyy年MM月dd日'),
-            'release|1' : true,
-            'mainTitle' : MockRandom.csentence(2),
-            'subTitle' : MockRandom.csentence(20),
-            'address' : MockRandom.province() + MockRandom.city() + MockRandom.county() + 'XX大酒店2楼',
-            'isOpenLimit|1' : true,
-            'applyPersonCount' : MockRandom.natural(0, 1000),
-            'logo' : MockRandom.dataImage()
-        },
-        {
-            'key' : '@string',
-            'createTime' : MockRandom.date('yyyy年MM月dd日'),
-            'activeTime' : MockRandom.date('yyyy年MM月dd日'),
-            'release|1' : true,
-            'mainTitle' : MockRandom.csentence(2),
-            'subTitle' : MockRandom.csentence(20),
-            'address' : MockRandom.province() + MockRandom.city() + MockRandom.county() + 'XX大酒店2楼',
-            'isOpenLimit|1' : true,
-            'applyPersonCount' : MockRandom.natural(0, 1000),
-            'logo' : MockRandom.dataImage()
-        },
-        {
-            'key' : '@string',
-            'createTime' : MockRandom.date('yyyy年MM月dd日'),
-            'activeTime' : MockRandom.date('yyyy年MM月dd日'),
-            'release|1' : true,
-            'mainTitle' : MockRandom.csentence(2),
-            'subTitle' : MockRandom.csentence(20),
-            'address' : MockRandom.province() + MockRandom.city() + MockRandom.county() + 'XX大酒店2楼',
-            'isOpenLimit|1' : true,
-            'applyPersonCount' : MockRandom.natural(0, 1000),
-            'logo' : MockRandom.dataImage()
-        },
-        {
-            'key' : '@string',
-            'createTime' : MockRandom.date('yyyy年MM月dd日'),
-            'activeTime' : MockRandom.date('yyyy年MM月dd日'),
-            'release|1' : true,
-            'mainTitle' : MockRandom.csentence(2),
-            'subTitle' : MockRandom.csentence(20),
-            'address' : MockRandom.province() + MockRandom.city() + MockRandom.county() + 'XX大酒店2楼',
-            'isOpenLimit|1' : true,
-            'applyPersonCount' : MockRandom.natural(0, 1000),
-            'logo' : MockRandom.dataImage()
-        },
+    'data|1-10' : [
         {
             'key' : '@string',
             'createTime' : MockRandom.date('yyyy年MM月dd日'),

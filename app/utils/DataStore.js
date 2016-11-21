@@ -55,17 +55,10 @@ let sendRequest = function(url,parameters){
     return promise;
 }
 
-module.exports = {
-    /*
-    * 获取商品砍价信息
-    * @param parameters:Object 请求参数
-    * */
-    getBargainInfo:function(parameters){
-        return sendRequest(AppConfig.ApiConfig.getBarginInfo,parameters);
-    },
-
-    getActiveList : function(){
-        return sendRequest(AppConfig.ApiConfig.getActiveList , {});
+Object.keys(AppConfig.ApiConfig).map(key => Object.defineProperty(module.exports, key, {
+         enumerable: false,
+         // writable: true,
+        get: () => parameters => sendRequest(AppConfig.ApiConfig[key], parameters)
     }
-};
+));
 

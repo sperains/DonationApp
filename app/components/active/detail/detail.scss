@@ -1,0 +1,57 @@
+
+
+.detail-top{
+	height: 60px;
+	background-color: #eee;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 18px;
+	justify-content: space-between;
+	padding-right: 40px;
+	border-bottom: solid 1px #c3c3c3;  
+
+	.nav{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+
+			.back{
+				height: 60px;
+				width: 60px;
+				background-image: url(../../../resources/images/back.png);
+				cursor: pointer;
+			}
+
+			.back:hover{
+				background-image: url(../../../resources/images/back-hover.png);
+			}
+
+			.parent{
+				margin-left: 20px;
+				margin-right: 10px;
+				color: #999;
+				cursor: pointer;
+			}
+
+			.title{
+				margin-left: 10px;
+				color: #999;
+			}
+			.current{
+				margin-left: 10px;
+				color: #333;
+			}
+		}
+}
+
+
+.detail-content{
+	margin-top: 60px;
+	margin-left: 60px;
+	margin-right: 40px;
+}
+
+.ant-table-row-level-0{
+	background-color: #f5f5f5;
+}

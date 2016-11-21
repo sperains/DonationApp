@@ -1,6 +1,7 @@
 .newactive-wrap{
 
 	height: 100%;
+	min-width: 800px;
 
 	.newactive-topbar{
 		height: 60px;
@@ -11,6 +12,7 @@
 		font-size: 18px;
 		justify-content: space-between;
 		padding-right: 40px;
+		border-bottom: solid 1px #c3c3c3;  
 		
 		.nav{
 			display: flex;
@@ -69,14 +71,16 @@
 			position: absolute;
 			top: 20px;
 			left: 60px;
-			background-color: red;
+			background-image: url(../../../resources/images/addimg.png);
+		}
+
+		.bghidden{
+			background-image: none;
 		}
 
 		.active-form{
 			width: auto;
 			margin:  20px auto 0 auto ;
-
-
 
 			.form-item{
 				display: flex;
@@ -128,9 +132,124 @@
 				}
 			}
 
+			.active-maintitle{
+				div{
+					width: 400px;
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					border: solid 1px #d3d3d3;
+					background-color: #fff;
+					padding-right: 10px;
+
+					input{
+						border: none;
+						outline: none;
+						text-align: left;
+					}
+				}
+			}
+
+			.active-desc {
+				
+				.label {
+					align-self: flex-start;
+				}
+
+				div{
+					width: 400px;
+					height: 160px;
+					border: solid 1px #d3d3d3;
+					background-color: #fff;
+					display: flex;
+					flex-direction: column;
+					padding-right: 10px;
+
+					span{
+						text-align: right;
+					}
+
+					textarea{
+						height: 160px;
+						border: none;
+						/*尺寸不可修改(去掉右下角三角)*/
+						resize: none;
+						/*去掉focus边框*/
+						outline: none;
+					}
+				}
+			},
+
+			.active-address{
+
+
+				input{
+					text-align: left;
+				}
+			}
+			
+			/*报名限额*/
+			.active-applyoptions{
+
+				div{
+					width: 400px;
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: flex-start;
+
+					.checkbox{
+						width: 30px;
+						height: 30px;
+						margin-right: 20px;
+						background-image: url(../../../resources/images/checkbox.png);
+					}
+
+					.checked{
+						background-image: url(../../../resources/images/checkbox-choosed.png);
+					}
+
+					span{
+						width: 100px;
+					}
+
+					.count{
+						width: 250px;
+					}
+				}
+			}
+
 			.subtitle-hidden{
 				display: none;
 			}
 		}
 	}
+}
+
+.avatar-uploader,
+.avatar-uploader-trigger,
+.avatar {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+}
+.avatar-uploader {
+  display: block;
+  cursor: pointer;
+  border: solid 4px #fff;
+  box-sizing: border-box;
+}
+.avatar-uploader-trigger {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 28px;
+  color: transparent;
+}
+
+.map{
+	width: 400px;
+	height: 320px;
+	cursor: pointer;
 }

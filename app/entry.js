@@ -9,6 +9,7 @@ import  {Router , Route , IndexRoute , Redirect , browserHistory} from 'react-ro
 import Main from './containers/Main';
 import Active from './components/active/Active';
 import NewActive from './components/active/newactive/NewActive';
+import Detail from './components/active/detail/Detail';
 import store from './store.js';
 
 
@@ -23,6 +24,7 @@ ReactDOM.render(
     			<IndexRoute component={Active}/>
     			<Route path="/active" component={Active}/>
     			<Route path="/active-new" component={NewActive} />
+                                    <Route path="/active-detail" component={Detail} />
     		</Route>
     	</Router>
     </Provider>,
