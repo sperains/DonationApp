@@ -10,6 +10,7 @@ import Main from './containers/Main';
 import Active from './components/active/Active';
 import NewActive from './components/active/newactive/NewActive';
 import Detail from './components/active/detail/Detail';
+import Member from './components/member/Member';
 import store from './store.js';
 
 
@@ -25,6 +26,7 @@ ReactDOM.render(
     			<Route path="/active" component={Active}/>
     			<Route path="/active-new" component={NewActive} />
                                     <Route path="/active-detail" component={Detail} />
+                                    <Route path="/member" component={Member} />
     		</Route>
     	</Router>
     </Provider>,

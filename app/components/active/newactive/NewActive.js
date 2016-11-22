@@ -21,6 +21,7 @@ export default class NewActive extends Component{
 			imgPreview : false,
 			descTextSize : 0,
 			mainTitleSize : 0 ,
+			inputStatus : 'disabled',
 			activeInfo : {
 				isOpenLimit : false,
 				address: ''
@@ -59,6 +60,11 @@ export default class NewActive extends Component{
 		})
 	}
 
+	onSaveClick(){
+		console.log(this.state.activeInfo)
+	}
+
+	//图片上传 
 	handleChange(info) {
 		console.log(123);
 		if (info.file.status === 'done') {
@@ -80,10 +86,6 @@ export default class NewActive extends Component{
 			descTextSize : text.length
 		})
 		this.setActiveInfo('desc' , text);
-	}
-
-	onSaveClick(){
-		console.log(this.state.activeInfo)
 	}
 
 	onMainTitleChange(){
@@ -219,7 +221,12 @@ export default class NewActive extends Component{
 							<div>
 								<div className={this.state.activeInfo.isOpenLimit ? 'checkbox checked' :'checkbox'} onClick={this.onCheckBoxClick}></div>
 								<span>限定报名人数</span>
-								<input className="count" type="text" ref="applyCount" onChange={this.onApplyCountChange} />
+								{
+									this.state.activeInfo.isOpenLimit ? 
+									<input className="count error" type="text" ref="applyCount"  onChange={this.onApplyCountChange} />
+									: <input className="count error" type="text" ref="applyCount" disabled="disabled" onChange={this.onApplyCountChange} />
+								}
+								
 							</div>
 						</div>
 						

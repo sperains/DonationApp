@@ -9,32 +9,41 @@ const columns = [
 		title: '姓名',
 		dataIndex: 'name',
 		// render: text => <a href="#">{text}</a>,
-		fixed: 'left'
+		fixed: 'left',
+		width : 120
 	}, 
-	{ title: '电话', dataIndex: 'age', }, 
-	{ title: '年龄', dataIndex: 'address', },
-	{ title:'微信昵称', dataIndex:'wechatNickname' },
-	{ title : '签到状态', dataIndex:'checkInStatus' },
-	{ title : '性别', dataIndex : 'sex'},
-	{ title : '微信号', 	dataIndex : 'wechatId' },
-	{ title : '所在省市', dataIndex : 'province'},
-	{ title : '所在区县' , dataIndex : 'distict' },
-	{ title : '工作单位' , dataIndex : 'company' },
-	{ title : '职位' , dataIndex : 'job' },
-	{ title : '学历' , dataIndex : 'educational' },
-	{ title : '疾病记录' , dataIndex : 'diseaseRecord' },
-	{ title : '茶道课程' , dataIndex : 'teaCeremony' },
-	{ title : '喜悦活动' , dataIndex : 'xiyueActive' }
+	{ title: '电话', dataIndex: 'phone' ,width : 120 , className : 'detail-column'}, 
+	{ title: '年龄', dataIndex: 'age' , width : 120},
+	{ title:'微信昵称', dataIndex:'wechatNickname' , width : 120 },
+	{ title : '签到状态', dataIndex:'checkInStatus' ,width : 120 , render : value => <div className={value == 1 ? 'check' : 'uncheck'}></div> },
+	{ title : '性别', dataIndex : 'sex' , width : 120 , render : value => value==0 ? '男' : '女' },
+	{ title : '微信号', 	dataIndex : 'wechatId' ,width : 120 , render : value => <a title={value}>{value}</a>},
+	{ title : '所在省市', dataIndex : 'province' , width : 120},
+	{ title : '所在区县' , dataIndex : 'distict' ,width : 120},
+	{ title : '工作单位' , dataIndex : 'company' ,width : 120},
+	{ title : '职位' , dataIndex : 'job' ,width:120},
+	{ title : '学历' , dataIndex : 'educational' ,width : 120},
+	{ title : '疾病记录' , dataIndex : 'diseaseRecord' ,width : 120},
+	{ title : '茶道课程' , dataIndex : 'teaCeremony' ,width : 120},
+	{ title : '喜悦活动' , dataIndex : 'xiyueActive' ,width : 120 }
 ];
 
 const data = [];
-for (let i = 0; i < 46; i++) {
-  data.push({
-    key: i,
-    name: `Edward King ${i}`,
-    age: 32,
-    address: `London, Park Lane no. ${i}`,
-  });
+for (let i = 0; i < 460; i++) {
+	data.push({
+		key: i,
+		name: `Edward King ${i}`,
+		phone : 15623551300,
+		age: Math.ceil(Math.random()*50),
+		address: `London. ndon.ndon.${i}`,
+		wechatNickname : 'wechat' + i ,
+		checkInStatus : Math.round(Math.random()),
+		sex : Math.round(Math.random()),
+		wechatId : 'fjfkasjdlfjlksdasdadsdasdasdasdasd' + i,
+		province : '',
+
+
+	});
 }
 
 const pagination = {
@@ -59,6 +68,7 @@ export default class Detail extends Component{
 			title : ''
 		}
 		this.onBackClick  = this.onBackClick.bind(this);
+		this.onExportToExcel = this.onExportToExcel.bind(this);
 	}
 
 
@@ -66,6 +76,9 @@ export default class Detail extends Component{
 		browserHistory.push('/active');
 	}
 
+	onExportToExcel(){
+
+	}
 
 	componentDidMount() {
 		const location = browserHistory.getCurrentLocation()
@@ -87,11 +100,11 @@ export default class Detail extends Component{
 						<span> / </span>
 						<span className="current">报名详情</span>
 					</div>
-					<div className="export"></div>
+					<div className="export" onClick={this.onExportToExcel}></div>
 				</div>
 
 				<div className="detail-content">
-					 <Table columns={columns} dataSource={data} pagination={pagination} scroll={{ x: 1300 }} />
+					 <Table columns={columns} dataSource={data} pagination={pagination} scroll={{ x:columns.length * columns[0].width  }} />
 				</div>
 			</div>
 		)
