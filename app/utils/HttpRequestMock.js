@@ -7,7 +7,7 @@ var MockRandom = Mock.Random;
 var AppConfig = require("./AppConfig.js");
 
 // 配置请求的相应时间
-Mock.setup({timeout:'500-1500'});
+Mock.setup({timeout:'500-800'});
 
 // 模拟首页请求数据
 Mock.mock(AppConfig.ApiConfig.getBarginInfo,{
@@ -41,3 +41,33 @@ Mock.mock(AppConfig.ApiConfig.getActiveList,{
         }
     ]
 });
+
+
+Mock.mock(AppConfig.ApiConfig.getMemberList,{
+    'status' : 1 ,
+    'data|1-1000' : [
+        {
+            'id': '@string',
+            'name': MockRandom.csentence(Math.random()*2+1),
+            'phone' : '15623551300',
+            'birthday' : MockRandom.date('yyyy-MM-dd'),
+            'wechatNickname': `Sperains`,
+            'totalScore': Math.round(Math.random()*1000),
+            'donatedMoney|0-1000' : MockRandom.integer(100,1000),
+            'inviter' : '万德武',
+            'identity|0-3' : MockRandom.integer(0,3),
+            'detail' : '详情',
+        }
+    ]
+});
+
+Mock.mock(AppConfig.ApiConfig.getMemberListById,{
+    'status' : 1 ,
+    'data|1-100' : [
+        {
+            'id' :'@string',
+            'imgUrl' : MockRandom.dataImage('80x80'),
+            'name' : MockRandom.csentence(Math.random()*2+1)
+        }
+    ]
+})

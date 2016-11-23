@@ -12,7 +12,7 @@ const columns = [
 		fixed: 'left',
 		width : 120
 	}, 
-	{ title: '电话', dataIndex: 'phone' ,width : 120 , className : 'detail-column'}, 
+	{ title: '电话', dataIndex: 'phone' ,width : 120 }, 
 	{ title: '年龄', dataIndex: 'age' , width : 120},
 	{ title:'微信昵称', dataIndex:'wechatNickname' , width : 120 },
 	{ title : '签到状态', dataIndex:'checkInStatus' ,width : 120 , render : value => <div className={value == 1 ? 'check' : 'uncheck'}></div> },
@@ -82,7 +82,6 @@ export default class Detail extends Component{
 
 	componentDidMount() {
 		const location = browserHistory.getCurrentLocation()
-		console.log(location);
 		this.setState({
 			title : location.state.title
 		})

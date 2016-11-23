@@ -17,9 +17,7 @@ let sendRequest = function(url,parameters){
 
         // initialize the form data
         var formData = new FormData();
-        for(var propertyName in parameters){
-            formData.append(propertyName,parameters[propertyName]);
-        }
+        Object.assign(formData, parameters);
 
         /*
          initialize the xml http request level2

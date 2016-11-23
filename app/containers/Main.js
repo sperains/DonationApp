@@ -1,6 +1,7 @@
 
 import React , { Component , PropTypes } from 'react' ;
 import { connect } from 'react-redux';
+import {browserHistory} from 'react-router';
 import { addTodo , completeTodo , setVisibilityFilter , VisibilityFilters} from '../actions/actions';
 import AddTodo from '../components/AddTodo';
 import TopBar from '../components/TopBar';
@@ -9,11 +10,19 @@ import Active from '../components/active/Active';
 import './app.css';
 import './main.scss';
 
-
+const location = browserHistory.getCurrentLocation();
+const pathname = location.pathname.substr(1);
 class Main extends Component{
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            pathname : pathname
+        };
+    }
+
     componentDidMount() {
-        // flexibility(document.documentElement);
+
     }
 
     render(){
@@ -22,7 +31,7 @@ class Main extends Component{
             <div className="wrap">
                 <TopBar />
                 <div className="content">
-                    <Sider />
+                    <Sider pathname={this.state.pathname}/>
                     <div className="right-wrap">
                         {this.props.children}       
                     </div>

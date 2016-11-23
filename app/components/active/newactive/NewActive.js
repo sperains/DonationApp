@@ -223,10 +223,9 @@ export default class NewActive extends Component{
 								<span>限定报名人数</span>
 								{
 									this.state.activeInfo.isOpenLimit ? 
-									<input className="count error" type="text" ref="applyCount"  onChange={this.onApplyCountChange} />
-									: <input className="count error" type="text" ref="applyCount" disabled="disabled" onChange={this.onApplyCountChange} />
-								}
-								
+									<input className="count error" type="number" max="9999"  min="1" ref="applyCount"  onChange={this.onApplyCountChange} />
+									: <input className="count error" type="number" max="9999" min="1" ref="applyCount" disabled="disabled" onChange={this.onApplyCountChange} />
+								}			
 							</div>
 						</div>
 						

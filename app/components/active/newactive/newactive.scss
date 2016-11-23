@@ -98,9 +98,11 @@
 					width: 400px;
 					height: 40px;
 					line-height: 40px;
-					text-align: right;
+					text-align: left;
+					padding-left: 10px;
 					padding-right: 10px;
 					border: solid 1px #d3d3d3;
+					outline: none;
 				}
 
 				.ant-input , .ant-time-picker-input{
@@ -127,8 +129,7 @@
 				.new-subtitle{
 					margin-left: 10px;
 					cursor: pointer;
-
-
+					
 				}
 			}
 
@@ -145,11 +146,11 @@
 					input{
 						border: none;
 						outline: none;
-						text-align: left;
 					}
 				}
 			}
-
+			
+			/*活动简介*/
 			.active-desc {
 				
 				.label {
@@ -172,6 +173,7 @@
 					textarea{
 						height: 160px;
 						border: none;
+						padding-left: 10px;
 						/*尺寸不可修改(去掉右下角三角)*/
 						resize: none;
 						/*去掉focus边框*/
@@ -179,13 +181,9 @@
 					}
 				}
 			},
-
+			
+			/*活动地址*/
 			.active-address{
-
-
-				input{
-					text-align: left;
-				}
 			}
 			
 			/*报名限额*/

@@ -16,7 +16,9 @@ var Config =  {
     ApiConfig:{
         getBarginInfo:_getFullUrlFromRelative("getGoodsInfo"),
         getActiveList : _getFullUrlFromRelative("getActiveList"),
-        getActiveDetail : _getFullUrlFromRelative("getActiveDetail")
+        getActiveDetail : _getFullUrlFromRelative("getActiveDetail"),
+        getMemberList : _getFullUrlFromRelative("getMemberList"),
+        getMemberListById : _getFullUrlFromRelative("getMemberListById")
     },
 };
 

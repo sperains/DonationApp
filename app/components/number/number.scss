@@ -1,0 +1,141 @@
+.number-wrap{
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+
+	.number-top{
+		height: 60px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		border-bottom: solid 1px #d3d3d3;
+		justify-content: space-between;
+		padding-right: 40px;
+
+		.nav{
+			width: 320px;
+			height: 60px;
+			display: flex;
+			flex-direction: row;
+			font-size: 18px;
+			align-items: center;
+
+			span{
+				height: 60px;
+				display: block;
+				box-sizing: border-box;
+				line-height: 60px;
+				width: 160px;
+				text-align: center;
+				cursor: pointer;
+			}
+
+			.active{
+				border-bottom: solid 4px #000;
+			}
+
+			
+		}
+
+		.save{
+			width: 160px;
+			height: 40px;
+			background-image: url(../../resources/images/save.png);
+		}
+	}
+
+
+	.number-content{
+		flex: 1;
+		position: relative;
+		margin-top: 60px;
+		display: flex;
+		flex-direction: column;
+
+		.num{
+			height: 100px;
+			width: 100px;
+			position: absolute;
+			left: 60px;
+			font-size: 48px;
+			font-family: "宋体";
+			background-color: #b3b3c7;
+			line-height: 100px;
+			text-align: center;
+			color: #fff;
+		}
+
+		.number-form{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			min-width: 800px;
+
+			.form-item{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				font-size: 16px;
+				margin-bottom: 20px;
+
+
+				/*label宽度*/
+				.label{
+					display: block;
+					text-align: right;
+					margin-right: 10px;
+					width: 70px;
+				}
+
+				input {
+					width: 400px;
+					height: 40px;
+					outline: none;
+					padding-left: 10px;
+				}
+
+				textarea{
+					width: 400px;
+					height: 160px;
+					resize: none;
+					outline: none;
+					padding-left: 10px;
+					padding-top: 10px;
+				}
+			}
+		}
+	}
+
+	.number-bottom{
+		height: 60px;
+		background-color: #f5f5f5;
+		border-top: solid 1px #d3d3d3;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 10px;
+
+		span {
+			height: 60px;
+			box-sizing: border-box;
+			display: block;
+			line-height: 60px;
+			width: 40px;
+			text-align: center;
+		}
+
+		span:nth-child(2n + 1 ){
+			border-bottom: solid 4px #b3b3c7 ;
+		}
+
+		span:nth-child(2n){
+			border-bottom: solid 4px #c9c9d4 ;
+		}
+
+		.active{
+			font-size: 20px;
+			border-bottom: solid 4px #374260 !important; 
+		}
+	}
+}

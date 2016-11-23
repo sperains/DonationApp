@@ -58,7 +58,6 @@ td {
 }
 
 .ant-dropdown-menu{
-	
 	border-radius: 0;
 
 	.ant-dropdown-menu-item{
@@ -69,4 +68,21 @@ td {
 	.ant-dropdown-menu-item-active{
 		background-color: #eee;
 	}
+}
+
+.ant-dropdown-link{
+	margin : 0 auto;
+
+	.dropdown-icon{
+		height: 7px;
+		width: 11px;
+		background-image: url(../../resources/images/dropdown.png);
+	}
+}
+
+.row-detail{
+	display: block;
+	margin: 0 auto;
+	color : blue;
+	cursor: pointer;
 }

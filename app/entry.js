@@ -9,8 +9,10 @@ import  {Router , Route , IndexRoute , Redirect , browserHistory} from 'react-ro
 import Main from './containers/Main';
 import Active from './components/active/Active';
 import NewActive from './components/active/newactive/NewActive';
-import Detail from './components/active/detail/Detail';
+import ActiveDetail from './components/active/detail/Detail';
 import Member from './components/member/Member';
+import MemberDetail from './components/member/detail/Detail';
+import Number from './components/number/Number';
 import store from './store.js';
 
 
@@ -25,8 +27,10 @@ ReactDOM.render(
     			<IndexRoute component={Active}/>
     			<Route path="/active" component={Active}/>
     			<Route path="/active-new" component={NewActive} />
-                                    <Route path="/active-detail" component={Detail} />
+                                    <Route path="/active-detail" component={ActiveDetail} />
                                     <Route path="/member" component={Member} />
+                                    <Route path="/member-detail" component={MemberDetail} />
+                                    <Route path="/number" component={Number} />
     		</Route>
     	</Router>
     </Provider>,

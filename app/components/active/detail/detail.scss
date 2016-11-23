@@ -135,15 +135,15 @@ td{
 
 /*分页栏激活时样式*/
 .ant-pagination-item-active {
-	border: solid 1px #000 !important;
 	background-color: #374260;
+	border: solid 1px #000 !important;
 	color: #000;
 }
 
 /*分页栏*/
-.ant-pagination-item:hover , .ant-pagination-prev:hover , .ant-pagination-next:hover  ,.ant-select-selection, .ant-select-selection:hover{
+.ant-pagination-item:hover , .ant-pagination-prev:hover , .ant-pagination-next:hover  , .ant-select-selection:hover{
 	border: solid 1px #000 !important;
-	box-shadow: none;
+	box-shadow: none !important;
 	a {
 		color: #000;
 	}
@@ -168,5 +168,6 @@ td{
 
 
 .ant-select-open .ant-select-selection{
-	box-shadow: none;
+	border:solid 1px #000;
+	box-shadow: none !important;
 }

@@ -10,16 +10,19 @@ export default class SingleMenu extends Component{
 			collapse : false,
 			menuList : [
 				{ key : '1' , text : '喜悦捐赠', active : false , imgCls : 'donate'},
-				{ key : '2' , text : '喜悦积分', active : false , imgCls : 'score'},
-				{ key : '3' , text : '会员管理', active : false , imgCls : 'member' , router : 'member'},
-				{ key : '4' , text : '喜悦活动', active : true , imgCls : 'activity' , router:'active'},
-				{ key : '5' , text : '生命数字', active : false , imgCls : 'number'},
+				{ key : '2' , text : '喜悦积分', active : props.pathname.startsWith('score') ? true : false , imgCls : 'score' , router:'score'},
+				{ key : '3' , text : '会员管理', active : props.pathname.startsWith('member') ? true : false , imgCls : 'member' , router : 'member'},
+				{ key : '4' , text : '喜悦活动', active : props.pathname.startsWith('active') ? true : false , imgCls : 'activity' , router:'active'},
+				{ key : '5' , text : '生命数字', active : props.pathname.startsWith('number') ? true : false , imgCls : 'number' , router:'number'},
 				{ key : '6' , text : '正念生活', active : false , imgCls : 'life'},
 				{ key : '7' , text : '职级管理', active : false , imgCls : 'account'}
 			]
 		}
 		this.onMenuCollapse = this.onMenuCollapse.bind(this);
 		this.onMenuClick = this.onMenuClick.bind(this);
+	}
+
+	componentDidMount() {
 	}
 
 	onMenuCollapse(){

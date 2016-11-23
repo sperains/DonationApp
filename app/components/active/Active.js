@@ -46,7 +46,6 @@ export default class Active extends Component{
 
 	onActiveDetailClick(index){
 		let title = this.state.activeList[index].mainTitle;
-		console.log(title)
 		browserHistory.push({
 			pathname : '/active-detail',
 			state : {

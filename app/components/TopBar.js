@@ -61,7 +61,7 @@ export default class TopBar extends Component {
 							</a>
 						</div>
 						<div className="info">
-							<span className="user">Rains</span>
+							<span className="user">Admin</span>
 							<div className="logout">
 								<span>注销</span>
 								<div className="logout-img"></div>
