@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
 import './singleMenu.scss';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 
 export default class SingleMenu extends Component{
 
@@ -36,7 +36,7 @@ export default class SingleMenu extends Component{
 		menuList.map( (menu , i) => {
 			if( index === i ){
 				menu.active = true
-				browserHistory.push('/' + menu.router)
+				hashHistory.push( menu.router)
 			}else{
 				menu.active = false
 			}

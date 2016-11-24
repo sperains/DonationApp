@@ -2,7 +2,7 @@
 import React , {Component} from 'react';
 import { Table  , Dropdown , Menu , Icon , message } from 'antd';
 import DataStore from '../../utils/DataStore.js' ;
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 import './member.scss';
 
 
@@ -29,6 +29,7 @@ export default class Member extends Component{
 	getWidth(arr){
 		let sum = 0 ;
 		arr.forEach( a => sum+= a.width );
+		console.log(sum)
 		return sum;
 	}
 
@@ -50,7 +51,7 @@ export default class Member extends Component{
 		console.log(value);
 		console.log(record);
 
-		browserHistory.push({
+		hashHistory.push({
 			pathname : '/member-detail',
 			state : {
 				record : record
@@ -67,11 +68,12 @@ export default class Member extends Component{
 				dataIndex: 'name',
 				// render: text => <a href="#">{text}</a>,
 				// fixed: 'left',
-				width : 120
+				width : 120,
+				render : value => <a title={value}>{value}</a>
 			}, 
-			{ title: '电话', dataIndex: 'phone' ,width : 100 }, 
+			{ title: '电话', dataIndex: 'phone' ,width : 100 ,render : value => <a title={value}>{value}</a>}, 
 			{ title: '出生日期', dataIndex: 'birthday' , width : 120},
-			{ title: '微信昵称', dataIndex:'wechatNickname' , width : 100 },
+			{ title: '微信昵称', dataIndex:'wechatNickname' , width : 100 ,render : value => <a title={value}>{value}</a> },
 			{ title : '积分总额(分)', dataIndex:'totalScore' ,width : 120  },
 			{ title : '捐款总额', dataIndex : 'donatedMoney' , width : 120},
 			{ title : '邀请人', 	dataIndex : 'inviter' ,width : 100 },
@@ -118,7 +120,7 @@ export default class Member extends Component{
 
 
 				<div className="member-content">
-					<Table columns={columns} dataSource={this.state.memberList} pagination={pagination} scroll={{ x:this.getWidth(columns)  }} />
+					<Table columns={columns} dataSource={this.state.memberList} pagination={pagination} scroll={{ x: 1080 }} />
 				</div>
 
 			</div>

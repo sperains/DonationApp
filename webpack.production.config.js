@@ -13,8 +13,7 @@ var webpack = require('webpack');
 
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const localHost = '192.168.31.173';
-const port = 8088;
+const localHost = 'www.ldted.com/xy/';
 
 var isProduction = function () {
     return process.env.NODE_ENV === 'production';
@@ -25,7 +24,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'javascripts/app.js',
-        publicPath: "http://"+localHost+":" + port + "/" 
+        publicPath: "http://"+localHost
     },
 
     //热部署相关配置
@@ -41,8 +40,7 @@ module.exports = {
         watchOptions: {
             aggregateTimeout: 300
         },
-        host: localHost ,
-        port: port
+        host: localHost 
     },
 
     plugins: [
@@ -58,6 +56,13 @@ module.exports = {
         // }),
         // 把jquery作为全局变量插入到所有的代码中
         // 然后就可以直接在页面中使用jQuery了
+        new webpack.DefinePlugin({
+          'process.env': {
+            NODE_ENV: JSON.stringify('production')
+          },
+          __DEV__: 'false'
+        }),
+        new webpack.optimize.UglifyJsPlugin(),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -82,11 +87,6 @@ module.exports = {
             compress: {
                 warnings: false
             },
-        }),
-
-
-        new webpack.DefinePlugin({
-            __DEV__: 'false'
         })
     ],
 

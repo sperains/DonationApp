@@ -11,7 +11,7 @@ Mock.setup({timeout:'500-800'});
 
 // 模拟首页请求数据
 Mock.mock(AppConfig.ApiConfig.getBarginInfo,{
-    'status':1,
+    'status':0,
     'data':{
         'openId': '@string',
         'isMine|0-1': 1,
@@ -25,26 +25,38 @@ Mock.mock(AppConfig.ApiConfig.getBarginInfo,{
 });
 
 Mock.mock(AppConfig.ApiConfig.getActiveList,{
-    'status' : 1 ,
+    'status' : 0 ,
     'data|1-10' : [
         {
-            'key' : '@string',
+            'id' : '@string',
             'createTime' : MockRandom.date('yyyy年MM月dd日'),
             'activeTime' : MockRandom.date('yyyy年MM月dd日'),
             'release|1' : true,
-            'mainTitle' : MockRandom.csentence(2),
+            'title' : MockRandom.csentence(2),
             'subTitle' : MockRandom.csentence(20),
             'address' : MockRandom.province() + MockRandom.city() + MockRandom.county() + 'XX大酒店2楼',
             'isOpenLimit|1' : true,
             'applyPersonCount' : MockRandom.natural(0, 1000),
-            'logo' : MockRandom.dataImage()
+            'logo' : MockRandom.dataImage(),
+            'lng' : '',
+            'lat' : '',
+            'date' : MockRandom.date('yyyy-MM-dd HH:mm:ss'),
+            'desc':''
         }
+    ]
+});
+
+Mock.mock(AppConfig.ApiConfig.getEnrollList,{
+    'status' : 0 , 
+    'data' : [
+        {"id":"1","name":"潘","phone":"15623240925","totalScore":0,"donatedMoney":0,"UpdateStatus":"0"},
+        {"id":"2","name":"潘","phone":"15623240925","totalScore":0,"donatedMoney":0,"UpdateStatus":"0"}
     ]
 });
 
 
 Mock.mock(AppConfig.ApiConfig.getMemberList,{
-    'status' : 1 ,
+    'status' : 0 ,
     'data|1-1000' : [
         {
             'id': '@string',
@@ -62,7 +74,7 @@ Mock.mock(AppConfig.ApiConfig.getMemberList,{
 });
 
 Mock.mock(AppConfig.ApiConfig.getMemberListById,{
-    'status' : 1 ,
+    'status' : 0 ,
     'data|1-100' : [
         {
             'id' :'@string',

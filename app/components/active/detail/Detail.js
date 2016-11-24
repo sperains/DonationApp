@@ -1,17 +1,12 @@
 
 import React , {Component} from 'react';
 import { Table } from 'antd';
-import { browserHistory } from 'react-router';
+import DataStore from '../../../utils/DataStore.js' ;
+import { hashHistory } from 'react-router';
 import './detail.scss';
 
 const columns = [
-	{
-		title: '姓名',
-		dataIndex: 'name',
-		// render: text => <a href="#">{text}</a>,
-		fixed: 'left',
-		width : 120
-	}, 
+	{ title: '姓名',dataIndex: 'name',fixed: 'left',width : 120}, 
 	{ title: '电话', dataIndex: 'phone' ,width : 120 }, 
 	{ title: '年龄', dataIndex: 'age' , width : 120},
 	{ title:'微信昵称', dataIndex:'wechatNickname' , width : 120 },
@@ -65,7 +60,8 @@ export default class Detail extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			title : ''
+			title : '',
+			enrollList : []
 		}
 		this.onBackClick  = this.onBackClick.bind(this);
 		this.onExportToExcel = this.onExportToExcel.bind(this);
@@ -73,7 +69,7 @@ export default class Detail extends Component{
 
 
 	onBackClick(){
-		browserHistory.push('/active');
+		hashHistory.push('/active');
 	}
 
 	onExportToExcel(){
@@ -81,10 +77,13 @@ export default class Detail extends Component{
 	}
 
 	componentDidMount() {
-		const location = browserHistory.getCurrentLocation()
-		this.setState({
+		const location = hashHistory.getCurrentLocation()
+		DataStore.getEnrollList({
+			id : '143'
+		}).then(  data => this.setState({
+			enrollList : data,
 			title : location.state.title
-		})
+		}))
 	}
 
 	render() {
@@ -103,7 +102,7 @@ export default class Detail extends Component{
 				</div>
 
 				<div className="detail-content">
-					 <Table columns={columns} dataSource={data} pagination={pagination} scroll={{ x:columns.length * columns[0].width  }} />
+					 <Table columns={columns} dataSource={this.state.enrollList} pagination={pagination} scroll={{ x:columns.length * columns[0].width  }} />
 				</div>
 			</div>
 		)

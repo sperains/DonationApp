@@ -1,6 +1,6 @@
 import React , { Component }from 'react';
 import DataStore from '../../../utils/DataStore.js' ;
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 import './detail.scss';
 
 export default class Detail extends Component{
@@ -16,7 +16,7 @@ export default class Detail extends Component{
 
 	componentDidMount() {
 
-		const location = browserHistory.getCurrentLocation();
+		const location = hashHistory.getCurrentLocation();
 		let record = location.state.record;
 
 		DataStore.getMemberListById().then(  data => this.setState({
@@ -26,7 +26,7 @@ export default class Detail extends Component{
 	}
 
 	onBackClick(){
-		browserHistory.push("/member");
+		HashHistory.push("/member");
 	}
 
 	render() {

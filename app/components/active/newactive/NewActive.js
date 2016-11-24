@@ -1,7 +1,7 @@
 
 import React , {Component} from 'react';
 import './newactive.scss';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 import { Input , DatePicker , TimePicker , Upload, Icon } from 'antd';
 import moment from 'moment';
 import Map from '../../common/map/Map';
@@ -21,11 +21,20 @@ export default class NewActive extends Component{
 			imgPreview : false,
 			descTextSize : 0,
 			mainTitleSize : 0 ,
-			inputStatus : 'disabled',
 			activeInfo : {
 				isOpenLimit : false,
-				address: ''
-			}
+				address: '',
+				activeTime:'',
+				address : '',
+				applyPersonCount :'',
+				createTime:'',
+				key:'',
+				logo:'',
+				mainTitle:'',
+				release : '',
+				subTitle: ''
+			},
+			operating : ''
 		}
 		this.onBackClick = this.onBackClick.bind(this);
 		this.onDisplaySubTitle = this.onDisplaySubTitle.bind(this);
@@ -42,9 +51,24 @@ export default class NewActive extends Component{
 		this.setActiveInfo = this.setActiveInfo.bind(this);
 	}
 
+	componentDidMount() {
+		const location = hashHistory.getCurrentLocation();
+		let activeInfo = location.state.record;
+		console.log(activeInfo)
+		this.setState({
+			operating : location.state.operating
+		})
+		if(location.state.operating == 1){
+			this.setState({
+				activeInfo : activeInfo,
+				mainTitleSize : activeInfo.title.length
+			})
+		}
+		
+	}
 
 	onBackClick(){
-		browserHistory.push('/active');
+		hashHistory.push('/active');
 	}
 
 	onDisplaySubTitle(){
@@ -92,7 +116,8 @@ export default class NewActive extends Component{
 		let text = this.refs.mainTitle.value.trim();
 		this.setActiveInfo('mainTitle', text);
 		this.setState({
-			mainTitleSize : text.length
+			mainTitleSize : text.length,
+			title : text
 		})
 	}
 
@@ -124,7 +149,7 @@ export default class NewActive extends Component{
 
 	onApplyCountChange(e){
 		let text = e.target.value.trim();
-		this.setActiveInfo('applyCount' , text);
+		this.setActiveInfo('applyPersonCount' , text);
 	}
 
 	setActiveInfo(prop , value){
@@ -155,7 +180,7 @@ export default class NewActive extends Component{
 						<div className="back" onClick={this.onBackClick}></div>
 						<span className="parent" onClick={this.onBackClick}>喜悦活动</span>
 						<span> / </span>
-						<span className="current">新建喜悦活动</span>
+						<span className="current">{this.state.operating == 0 ? '新建喜悦活动' : '编辑喜悦活动'}</span>
 					</div>
 					<div className="save" onClick={this.onSaveClick}></div>
 				</div>
@@ -180,7 +205,7 @@ export default class NewActive extends Component{
 						<div className="form-item active-maintitle">
 							<span className="label">主题:</span>
 							<div>
-								<input ref="mainTitle" onChange={this.onMainTitleChange} maxLength="8"/>
+								<input ref="mainTitle" type="text" onChange={this.onMainTitleChange} maxLength="8" value={this.state.activeInfo.title}/>
 								<span>{this.state.mainTitleSize}/8</span>
 							</div>
 							
@@ -195,14 +220,14 @@ export default class NewActive extends Component{
 
 						<div className="form-item active-date">
 							<span className="label">时间:</span>
-							<DatePicker format={dateFormat} onChange={this.onActiveDateChange}/>
+							<DatePicker format={dateFormat} onChange={this.onActiveDateChange} defaultValue={moment('2016-05-02',dateFormat)}/>
 							<TimePicker format={timeFormat} onChange={this.onActiveTimeChange}/>
 						</div>
 
 						<div className="form-item active-desc">
 							<span className="label">简介:</span>
 							<div>
-								<textarea placeholder="" maxLength='100' onChange={this.onTextAreaChange} ref="desc"></textarea>
+								<textarea placeholder="" maxLength='100' onChange={this.onTextAreaChange} ref="desc" value={this.state.activeInfo.desc}></textarea>
 								<span>{this.state.descTextSize}/100</span>
 							</div>
 						</div>
@@ -223,7 +248,7 @@ export default class NewActive extends Component{
 								<span>限定报名人数</span>
 								{
 									this.state.activeInfo.isOpenLimit ? 
-									<input className="count error" type="number" max="9999"  min="1" ref="applyCount"  onChange={this.onApplyCountChange} />
+									<input className="count error" type="number" max="9999"  min="1" ref="applyCount"  onChange={this.onApplyCountChange} value={this.state.activeInfo.applyPersonCount} />
 									: <input className="count error" type="number" max="9999" min="1" ref="applyCount" disabled="disabled" onChange={this.onApplyCountChange} />
 								}			
 							</div>

@@ -7,11 +7,12 @@ $topbarHeight : 80px;
 }
 
 
-/*设置内容区绝对定位*/
+/*设置内容区位置*/
 .content{
+	flex: 1;
 	display: flex;
 	flex-direction: row;
-	height:calc(100% - $topbarHeight); 
+	/*height:calc(100% - $topbarHeight); */
 }
 
 .right-wrap{
