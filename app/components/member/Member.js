@@ -101,7 +101,8 @@ export default class Member extends Component{
 
 		const pagination = {
 			total: this.state.memberList.length,
-			showSizeChanger: true,
+			showSizeChanger: false,
+			defaultPageSize : 15,
 			onShowSizeChange: (current, pageSize) => {
 				console.log('Current: ', current, '; PageSize: ', pageSize);
 			},

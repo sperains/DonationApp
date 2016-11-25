@@ -29,19 +29,19 @@ Mock.mock(AppConfig.ApiConfig.getActiveList,{
     'data|1-10' : [
         {
             'id' : '@string',
-            'createTime' : MockRandom.date('yyyy年MM月dd日'),
-            'activeTime' : MockRandom.date('yyyy年MM月dd日'),
-            'release|1' : true,
+            'createTime' : MockRandom.date('yyyy-MM-dd'),
+            'release|0-3' : MockRandom.natural(0, 2),
             'title' : MockRandom.csentence(2),
             'subTitle' : MockRandom.csentence(20),
             'address' : MockRandom.province() + MockRandom.city() + MockRandom.county() + 'XX大酒店2楼',
             'isOpenLimit|1' : true,
-            'applyPersonCount' : MockRandom.natural(0, 1000),
-            'logo' : MockRandom.dataImage(),
+            'activeLimit' : 0,
+            'personCount' : MockRandom.natural(0, 1000),
+            'imageUrl' : 'https://t.alipayobjects.com/images/rmsweb/T1B9hfXcdvXXXXXXXX.svg',
             'lng' : '',
             'lat' : '',
-            'date' : MockRandom.date('yyyy-MM-dd HH:mm:ss'),
-            'desc':''
+            'activeTime' : MockRandom.date('yyyy-MM-dd HH:mm'),
+            'desc':MockRandom.csentence(50)
         }
     ]
 });
@@ -49,8 +49,8 @@ Mock.mock(AppConfig.ApiConfig.getActiveList,{
 Mock.mock(AppConfig.ApiConfig.getEnrollList,{
     'status' : 0 , 
     'data' : [
-        {"id":"1","name":"潘","phone":"15623240925","totalScore":0,"donatedMoney":0,"UpdateStatus":"0"},
-        {"id":"2","name":"潘","phone":"15623240925","totalScore":0,"donatedMoney":0,"UpdateStatus":"0"}
+        {"id":"1","name":"潘","phone":"15623240925", "ageGroup" : '1' ,"totalScore":0,"donatedMoney":0,"UpdateStatus":"0" , "checkInStatus" : 0 , 'sex' : '0'},
+        {"id":"2","name":"潘","phone":"15623240925", "ageGroup" : '3' ,"totalScore":0,"donatedMoney":0,"UpdateStatus":"1" , "checkInStatus" : 1 , 'sex' : '3'}
     ]
 });
 

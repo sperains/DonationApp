@@ -10,9 +10,11 @@ import Active from '../components/active/Active';
 import './app.css';
 import './main.scss';
 
+hashHistory.push("/active");
 const location = hashHistory.getCurrentLocation();
+
 const pathname = location.pathname.substr(1);
-console.log(pathname)
+
 class Main extends Component{
 
     constructor(props) {
@@ -21,14 +23,20 @@ class Main extends Component{
             pathname : pathname,
             bodyHeight : ''
         };
+        this.handleResize = this.handleResize.bind(this);
     }
 
-    componentDidMount() {
-        console.log($(document).height());
+    componentWillMount() {
+        window.addEventListener('resize', this.handleResize);  
         this.setState({
             bodyHeight : $(document).height() - 80
         })
+    }
 
+    handleResize(){
+        this.setState({
+            bodyHeight : $(document).height() - 80
+        })
     }
 
     render(){

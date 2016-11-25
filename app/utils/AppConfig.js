@@ -20,7 +20,11 @@ var Config =  {
         getActiveDetail : _getFullUrlFromRelative("getActiveDetail"),
         getEnrollList : _getFullUrlFromRelative("getEnrollList"),
         getMemberList : _getFullUrlFromRelative("getMemberList"),
-        getMemberListById : _getFullUrlFromRelative("getMemberListById")
+        getMemberListById : _getFullUrlFromRelative("getMemberListById"),
+        addActive : _getFullUrlFromRelative("addActivity"),
+        deleteActive : _getFullUrlFromRelative("deleteActivity"),
+        releaseActive : _getFullUrlFromRelative("releaseActivity")
+
     },
 };
 

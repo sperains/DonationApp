@@ -71,6 +71,7 @@ td {
 }
 
 .ant-dropdown-link{
+	height: 20px;
 	margin : 0 auto;
 
 	.dropdown-icon{
@@ -85,4 +86,12 @@ td {
 	margin: 0 auto;
 	color : blue;
 	cursor: pointer;
+}
+
+.ant-pagination-item:hover , .ant-pagination-prev:hover , .ant-pagination-next:hover  , .ant-select-selection:hover{
+	border: solid 1px #000 !important;
+	box-shadow: none !important;
+	a {
+		color: #000;
+	}
 }

@@ -2,15 +2,14 @@
 import React , {Component} from 'react';
 import './newactive.scss';
 import { hashHistory } from 'react-router';
-import { Input , DatePicker , TimePicker , Upload, Icon } from 'antd';
+import { Input , DatePicker , TimePicker , Upload, Icon , message } from 'antd';
+import DataStore from '../../../utils/DataStore.js' ;
 import moment from 'moment';
 import Map from '../../common/map/Map';
 
-
+moment.locale('zh-cn');
 const dateFormat = 'YYYY-MM-DD';
 const timeFormat = 'HH:mm';
-
-
 
 export default class NewActive extends Component{
 
@@ -21,20 +20,25 @@ export default class NewActive extends Component{
 			imgPreview : false,
 			descTextSize : 0,
 			mainTitleSize : 0 ,
+			dateStatus : {},
+			timeStatus : {},
 			activeInfo : {
-				isOpenLimit : false,
-				address: '',
-				activeTime:'',
-				address : '',
-				applyPersonCount :'',
-				createTime:'',
-				key:'',
-				logo:'',
-				mainTitle:'',
-				release : '',
-				subTitle: ''
+				isOpenLimit : false,				//是否开启限额
+				activeLimit : '',					//限制报名人数
+				address: '',						//地址
+				activeTime:'',					//活动时间
+				address : '',						//活动地址
+				personCount :'',				//报名人数
+				createTime:'',					//活动创建时间
+				id:'',	
+				lat : '',
+				lng : '',						//唯一id
+				imageUrl:'',						//活动logo
+				title:'',							//主标题
+				release : '',						//是否发布
+				subTitle: ''						//副标题
 			},
-			operating : ''
+			operating : ''						//操作标识   0  新建 1编辑
 		}
 		this.onBackClick = this.onBackClick.bind(this);
 		this.onDisplaySubTitle = this.onDisplaySubTitle.bind(this);
@@ -43,28 +47,45 @@ export default class NewActive extends Component{
 		this.onTextAreaChange = this.onTextAreaChange.bind(this);
 		this.onSaveClick = this.onSaveClick.bind(this);
 		this.onMainTitleChange = this.onMainTitleChange.bind(this);
+		this.onSubTitleChange = this.onSubTitleChange.bind(this);
 		this.onActiveDateChange = this.onActiveDateChange.bind(this);
 		this.onActiveTimeChange = this.onActiveTimeChange.bind(this);
 		this.onAddressChange = this.onAddressChange.bind(this);
 		this.onCheckBoxClick = this.onCheckBoxClick.bind(this);
-		this.onApplyCountChange = this.onApplyCountChange.bind(this);
+		this.onLimitChange = this.onLimitChange.bind(this);
 		this.setActiveInfo = this.setActiveInfo.bind(this);
 	}
 
-	componentDidMount() {
+	componentWillMount() {
+		//获取路由传递过来的参数
 		const location = hashHistory.getCurrentLocation();
 		let activeInfo = location.state.record;
 		console.log(activeInfo)
+
+		//设置标题
 		this.setState({
 			operating : location.state.operating
 		})
+
+		//如果是编辑页面获取参数
 		if(location.state.operating == 1){
 			this.setState({
 				activeInfo : activeInfo,
-				mainTitleSize : activeInfo.title.length
+				mainTitleSize : activeInfo.title.length,
+				imageUrl:  activeInfo.imageUrl,
+				imgPreview : true,
+				timeStatus : {
+					defaultValue : moment(activeInfo.activeTime.substr(11), timeFormat)
+				},
+				dateStatus :  {
+					defaultValue : moment(activeInfo.activeTime.substr(0,10), dateFormat)
+				}
 			})
 		}
-		
+	}
+
+	componentDidMount() {
+
 	}
 
 	onBackClick(){
@@ -84,13 +105,24 @@ export default class NewActive extends Component{
 		})
 	}
 
+	// 添加活动
 	onSaveClick(){
-		console.log(this.state.activeInfo)
+		
+		let activeInfo = this.state.activeInfo;
+		console.log(activeInfo);
+		if(this.state.operating == 0 ){
+			activeInfo.imageUrl = 'https://t.alipayobjects.com/images/rmsweb/T1B9hfXcdvXXXXXXXX.svg';
+			DataStore.addActive(activeInfo).then( data => message.success('添加活动成功') , error => message.error("添加失败,请稍后再试.."));
+		}else{
+			activeInfo.imageUrl = this.state.imageUrl;
+			message.error("编辑失败!未接入编辑接口!")
+		}
+		
+		
 	}
 
 	//图片上传 
 	handleChange(info) {
-		console.log(123);
 		if (info.file.status === 'done') {
 			this.setState({
 			// Get this url from response in real world.
@@ -114,7 +146,7 @@ export default class NewActive extends Component{
 
 	onMainTitleChange(){
 		let text = this.refs.mainTitle.value.trim();
-		this.setActiveInfo('mainTitle', text);
+		this.setActiveInfo('title', text);
 		this.setState({
 			mainTitleSize : text.length,
 			title : text
@@ -127,11 +159,16 @@ export default class NewActive extends Component{
 	}
 
 	onActiveDateChange(monent , date){
-		this.setActiveInfo('date', date);
+		let activeTime = this.state.activeInfo.activeTime;
+		let time = activeTime.substr(10);
+
+		this.setActiveInfo('activeTime', date +" " +  time);
 	}
 
 	onActiveTimeChange(monent , time){
-		this.setActiveInfo('time', time);
+		let activeTime = this.state.activeInfo.activeTime;
+		let date = activeTime.substr(0,10) ;
+		this.setActiveInfo('activeTime', date + " " + time);
 	}
 
 	onAddressChange(event){
@@ -147,9 +184,9 @@ export default class NewActive extends Component{
 		});
 	}
 
-	onApplyCountChange(e){
-		let text = e.target.value.trim();
-		this.setActiveInfo('applyPersonCount' , text);
+	onLimitChange(){
+		let text = this.refs.activeLimit.value.trim();
+		this.setActiveInfo('activeLimit' , text);
 	}
 
 	setActiveInfo(prop , value){
@@ -205,7 +242,7 @@ export default class NewActive extends Component{
 						<div className="form-item active-maintitle">
 							<span className="label">主题:</span>
 							<div>
-								<input ref="mainTitle" type="text" onChange={this.onMainTitleChange} maxLength="8" value={this.state.activeInfo.title}/>
+								<input placeholder="请输入主题" ref="mainTitle" type="text" onChange={this.onMainTitleChange} maxLength="8" value={this.state.activeInfo.title}/>
 								<span>{this.state.mainTitleSize}/8</span>
 							</div>
 							
@@ -220,21 +257,21 @@ export default class NewActive extends Component{
 
 						<div className="form-item active-date">
 							<span className="label">时间:</span>
-							<DatePicker format={dateFormat} onChange={this.onActiveDateChange} defaultValue={moment('2016-05-02',dateFormat)}/>
-							<TimePicker format={timeFormat} onChange={this.onActiveTimeChange}/>
+							<DatePicker format={dateFormat} onChange={this.onActiveDateChange} {...this.state.dateStatus}  />
+							<TimePicker format={timeFormat} onChange={this.onActiveTimeChange} {...this.state.timeStatus}/>
 						</div>
 
 						<div className="form-item active-desc">
 							<span className="label">简介:</span>
 							<div>
-								<textarea placeholder="" maxLength='100' onChange={this.onTextAreaChange} ref="desc" value={this.state.activeInfo.desc}></textarea>
+								<textarea placeholder="请输入活动简介" maxLength='100' onChange={this.onTextAreaChange} ref="desc" value={this.state.activeInfo.desc}></textarea>
 								<span>{this.state.descTextSize}/100</span>
 							</div>
 						</div>
 
 						<div className="form-item active-address">
-							<span className="label">地点:</span>
-							<input type="text" ref="address" onChange={this.onAddressChange} value={this.state.activeInfo.address}/>
+							<span  className="label">地点:</span>
+							<input placeholder="请选择活动地点" type="text" ref="address" onChange={this.onAddressChange} value={this.state.activeInfo.address}/>
 						</div>
 						<div  className="form-item">
 							<span className="label"></span>
@@ -248,8 +285,8 @@ export default class NewActive extends Component{
 								<span>限定报名人数</span>
 								{
 									this.state.activeInfo.isOpenLimit ? 
-									<input className="count error" type="number" max="9999"  min="1" ref="applyCount"  onChange={this.onApplyCountChange} value={this.state.activeInfo.applyPersonCount} />
-									: <input className="count error" type="number" max="9999" min="1" ref="applyCount" disabled="disabled" onChange={this.onApplyCountChange} />
+									<input className="count error" type="number" max="9999"  min="1" ref="activeLimit"  onChange={this.onLimitChange} value={this.state.activeInfo.activeLimit} />
+									: <input className="count error" type="number" max="9999" min="1" ref="activeLimit" disabled="disabled" onChange={this.onLimitChange}  value={this.state.activeInfo.activeLimit}/>
 								}			
 							</div>
 						</div>

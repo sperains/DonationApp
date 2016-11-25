@@ -26,7 +26,7 @@ export default class Detail extends Component{
 	}
 
 	onBackClick(){
-		HashHistory.push("/member");
+		hashHistory.push("/member");
 	}
 
 	render() {

@@ -36,6 +36,7 @@
 
 			.title{
 				margin-left: 10px;
+				margin-right: 10px;
 				color: #999;
 			}
 			.current{
@@ -167,8 +168,21 @@ td{
 	border-right: solid 1px #d3d3d3;
 }
 
-
 .ant-select-open .ant-select-selection{
 	border:solid 1px #000;
 	box-shadow: none !important;
 }
+
+.ant-table-content{
+	height: 657px;
+/*	border: solid 1px #c3c3c3; */
+}
+
+.ant-table-body{
+	overflow-x: hidden !important;
+}
+
+.ant-table-body:hover{
+	overflow-x: scroll !important;
+}
+

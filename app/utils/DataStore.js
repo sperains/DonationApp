@@ -40,7 +40,7 @@ function sendRequest(url, parameters) {
 
         function handler() {
             if (this.readyState !== 4) {
-                return;
+               return ;
             }
             if (this.status === 200) {
                 var responseObject;
@@ -49,7 +49,6 @@ function sendRequest(url, parameters) {
                 }else{
                     responseObject = this.response;
                 }
-                console.info(responseObject);
                 if (responseObject.status == 0) {
                     resolve(responseObject.data);
                 } else {
