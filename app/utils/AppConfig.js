@@ -29,7 +29,7 @@ var Config =  {
         deleteActive : _getFullUrlFromRelative("deleteActivity"),
         releaseActive : _getFullUrlFromRelative("releaseActivity"),
         getNumDetail : _getFullUrlFromRelative("getNumDetail"),
-        exportToExcel : _exportToExcel()
+        updateNumInfo : _getFullUrlFromRelative("updateNumInfo")
     },
 };
 

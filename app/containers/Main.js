@@ -48,6 +48,8 @@ class Main extends Component{
         })
     }
 
+    // <!-- <div className="modal"></div> -->
+
     render(){
         const { dispatch } = this.props;
         return (
@@ -59,6 +61,7 @@ class Main extends Component{
                         {this.props.children}       
                     </div>
                 </div>
+
             </div>
         )
     }
