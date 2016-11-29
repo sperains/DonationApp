@@ -2,7 +2,7 @@
 import React , {Component} from 'react';
 import './newactive.scss';
 import { hashHistory } from 'react-router';
-import { Input , DatePicker , TimePicker , Upload, Icon , message } from 'antd';
+import { Input , DatePicker , TimePicker , Upload, Icon , message , Alert } from 'antd';
 import DataStore from '../../../utils/DataStore.js' ;
 import moment from 'moment';
 import Map from '../../common/map/Map';
@@ -30,13 +30,14 @@ export default class NewActive extends Component{
 				address : '',						//活动地址
 				personCount :'',				//报名人数
 				createTime:'',					//活动创建时间
-				id:'',	
-				lat : '',
-				lng : '',						//唯一id
+				id:'',							//唯一id
+				lat : '0.1',
+				lng : '0.1',						
 				imageUrl:'',						//活动logo
 				title:'',							//主标题
 				release : '',						//是否发布
-				subTitle: ''						//副标题
+				subTitle: '',						//副标题,
+				desc : ''
 			},
 			operating : ''						//操作标识   0  新建 1编辑
 		}
@@ -60,7 +61,7 @@ export default class NewActive extends Component{
 		//获取路由传递过来的参数
 		const location = hashHistory.getCurrentLocation();
 		let activeInfo = location.state.record;
-		console.log(activeInfo)
+		// console.log(activeInfo)
 
 		//设置标题
 		this.setState({
@@ -109,7 +110,33 @@ export default class NewActive extends Component{
 	onSaveClick(){
 		
 		let activeInfo = this.state.activeInfo;
-		console.log(activeInfo);
+
+		if(activeInfo.title == ""){
+			message.error("请填写活动主题");
+			return ;
+		}
+
+		if(activeInfo.activeTime.substr(0,10) == ""){
+			message.error("请选择活动日期");
+			return ;
+		}
+
+		if(activeInfo.activeTime.substr(10).trim() == ""){
+			message.error("请选择活动时间");
+			return ;
+		}
+
+		if(activeInfo.address == ""){
+			message.error("请选择活动地点")
+			return ;
+		}
+
+		if(activeInfo.desc == ""){
+			activeInfo.desc = "活动简介";
+		}
+
+		console.log(activeInfo)
+
 		if(this.state.operating == 0 ){
 			activeInfo.imageUrl = 'https://t.alipayobjects.com/images/rmsweb/T1B9hfXcdvXXXXXXXX.svg';
 			DataStore.addActive(activeInfo).then( data => message.success('添加活动成功') , error => message.error("添加失败,请稍后再试.."));
@@ -136,6 +163,8 @@ export default class NewActive extends Component{
 		});
 	}
 
+
+	// 
 	onTextAreaChange(){
 		let text = this.refs.desc.value.trim();
 		this.setState({
@@ -186,6 +215,9 @@ export default class NewActive extends Component{
 
 	onLimitChange(){
 		let text = this.refs.activeLimit.value.trim();
+		if(isNaN(text)){
+			return ;
+		}
 		this.setActiveInfo('activeLimit' , text);
 	}
 
@@ -242,14 +274,14 @@ export default class NewActive extends Component{
 						<div className="form-item active-maintitle">
 							<span className="label">主题:</span>
 							<div>
-								<input placeholder="请输入主题" ref="mainTitle" type="text" onChange={this.onMainTitleChange} maxLength="8" value={this.state.activeInfo.title}/>
-								<span>{this.state.mainTitleSize}/8</span>
+								<input placeholder="请输入主题" ref="mainTitle" type="text" onChange={this.onMainTitleChange} maxLength="7" value={this.state.activeInfo.title}/>
+								<span>{this.state.mainTitleSize}/7</span>
 							</div>
 							
 							<span className="new-subtitle" onClick={this.onDisplaySubTitle} >创建副标题</span>
 						</div>
 
-						<div className={this.state.displaySubTitle ? 'form-item' :  'subtitle-hidden'}>
+						<div className={this.state.displaySubTitle ? 'form-item' :  'form-item subtitle-hidden'}>
 							<span className="label">副标题:</span>
 							<input placeholder="请输入副标题" ref="subTitle" onChange={this.onSubTitleChange} />
 							<span className="new-subtitle" onClick={this.onDelSubTitle}>删除</span>
@@ -285,15 +317,11 @@ export default class NewActive extends Component{
 								<span>限定报名人数</span>
 								{
 									this.state.activeInfo.isOpenLimit ? 
-									<input className="count error" type="number" max="9999"  min="1" ref="activeLimit"  onChange={this.onLimitChange} value={this.state.activeInfo.activeLimit} />
-									: <input className="count error" type="number" max="9999" min="1" ref="activeLimit" disabled="disabled" onChange={this.onLimitChange}  value={this.state.activeInfo.activeLimit}/>
+									<input className="count error" type="text" max="9999"  min="1" ref="activeLimit"  onChange={this.onLimitChange} value={this.state.activeInfo.activeLimit} />
+									: <input className="count error" type="text" max="9999" min="1" ref="activeLimit" disabled="disabled" onChange={this.onLimitChange}  value={this.state.activeInfo.activeLimit}/>
 								}			
 							</div>
 						</div>
-						
-
-						
-
 					</div>
 				</div>
 			</div>

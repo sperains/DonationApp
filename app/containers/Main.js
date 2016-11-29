@@ -10,8 +10,14 @@ import Active from '../components/active/Active';
 import './app.css';
 import './main.scss';
 
-hashHistory.push("/active");
-const location = hashHistory.getCurrentLocation();
+//获取当前页面的location
+let location = hashHistory.getCurrentLocation();
+
+// 如果路由为空则转到active .  然后获取新的location
+if(location.pathname == "/" ){
+    hashHistory.push("/active");
+    location = hashHistory.getCurrentLocation();
+}
 
 const pathname = location.pathname.substr(1);
 
@@ -26,13 +32,16 @@ class Main extends Component{
         this.handleResize = this.handleResize.bind(this);
     }
 
+
     componentWillMount() {
+        // 为窗口添加resize事件
         window.addEventListener('resize', this.handleResize);  
         this.setState({
             bodyHeight : $(document).height() - 80
         })
     }
 
+    // 处理resize事件,当页面尺寸发生变化时,重新设置页面的高度
     handleResize(){
         this.setState({
             bodyHeight : $(document).height() - 80

@@ -1,3 +1,5 @@
+
+
 .newactive-wrap{
 
 	height: 100%;
@@ -92,6 +94,7 @@
 				.label{
 					margin-right: 10px;
 					width: 60px;
+					text-align: right;
 				}
 
 				input{
@@ -105,12 +108,30 @@
 					outline: none;
 				}
 
+				@media only screen and (min-width: 1080px){
+					input {
+						width: 760px;
+					}
+				}
+		
+
+
+
+
 				.ant-input , .ant-time-picker-input{
 					padding-right: 40px;
 					border-radius: 0;
 					width: 190px;
 					font-size: 16px;
 				}
+				
+				@media only screen and (min-width: 1080px){
+					.ant-input , .ant-time-picker-input{
+						width : 370px;
+					}
+				}
+				
+
 				.ant-time-picker-input{
 					margin-left: 20px;
 				}
@@ -147,7 +168,20 @@
 						outline: none;
 					}
 				}
+
+				@media only screen and (min-width: 1080px){
+					div{
+						width: 760px;
+						input {
+							width: 760px;
+						}
+					}
+				}
 			}
+
+
+
+
 			
 			/*活动简介*/
 			.active-desc {
@@ -179,11 +213,19 @@
 						/*去掉focus边框*/
 						outline: none;
 					}
+
 				}
-			},
+
+				@media only screen and (min-width: 1080px){
+					div{
+						width: 760px;
+					}
+				}
+			}
 			
 			/*活动地址*/
 			.active-address{
+
 			}
 			
 			/*报名限额*/
@@ -214,7 +256,18 @@
 					.count{
 						width: 250px;
 					}
+				}
 
+				
+				@media only screen and (min-width: 1080px){
+
+					div{
+						width: 760px;
+
+						.count {
+							width: 610px;
+						}
+					}
 				}
 			}
 
@@ -251,4 +304,12 @@
 	width: 400px;
 	height: 320px;
 	cursor: pointer;
+}
+
+
+@media only screen and (min-width: 1080px){
+	.map {
+		height: 400px;
+		width: 760px;
+	}
 }

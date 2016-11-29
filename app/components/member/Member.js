@@ -11,7 +11,8 @@ export default class Member extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			memberList : []
+			memberList : [],
+			page : 1
 		}
 		this.getWidth = this.getWidth.bind(this);
 		this.onClick = this.onClick.bind(this);
@@ -34,6 +35,7 @@ export default class Member extends Component{
 	}
 
 	onClick(item) {
+		console.log(item);
 		// 获取设置的身份
 		let identity = item.key;
 		//获取当前行的数据
@@ -41,7 +43,7 @@ export default class Member extends Component{
 		//获取当前行数据的下标
 		let index = item.item.props.item.index;
 		let memberList = this.state.memberList;
-		memberList[index].identity = identity;
+		memberList[(this.state.page-1)* 15 + index].identity = identity;
 		this.setState({
 			memberList : memberList
 		})
@@ -108,6 +110,9 @@ export default class Member extends Component{
 			},
 			onChange: (current) => {
 				console.log('Current: ', current);
+				this.setState({
+					page  : current
+				})
 			}
 		};
 

@@ -10,6 +10,10 @@ function _getFullUrlFromRelative(relativeUrl){
     return domain + serverUrl + relativeUrl;
 }
 
+function _exportToExcel(){
+    return domain + "services/ExcelServlet"
+}
+
 var Config =  {
     /*
     * 接口配置
@@ -23,8 +27,9 @@ var Config =  {
         getMemberListById : _getFullUrlFromRelative("getMemberListById"),
         addActive : _getFullUrlFromRelative("addActivity"),
         deleteActive : _getFullUrlFromRelative("deleteActivity"),
-        releaseActive : _getFullUrlFromRelative("releaseActivity")
-
+        releaseActive : _getFullUrlFromRelative("releaseActivity"),
+        getNumDetail : _getFullUrlFromRelative("getNumDetail"),
+        exportToExcel : _exportToExcel()
     },
 };
 

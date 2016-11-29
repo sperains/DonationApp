@@ -49,7 +49,7 @@ Mock.mock(AppConfig.ApiConfig.getActiveList,{
 Mock.mock(AppConfig.ApiConfig.getEnrollList,{
     'status' : 0 , 
     'data' : [
-        {"id":"1","name":"潘","phone":"15623240925", "ageGroup" : '1' ,"totalScore":0,"donatedMoney":0,"UpdateStatus":"0" , "checkInStatus" : 0 , 'sex' : '0'},
+        {"id":"1","name":"潘","phone":"15623240925", "ageGroup" : '1' ,"totalScore":0,"donatedMoney":0,"UpdateStatus":"0" , "checkInStatus" : 0 , 'sex' : '0' , 'diseaseRecord' : '病病病病病病病病病病病病病病病病病病病病病病'},
         {"id":"2","name":"潘","phone":"15623240925", "ageGroup" : '3' ,"totalScore":0,"donatedMoney":0,"UpdateStatus":"1" , "checkInStatus" : 1 , 'sex' : '3'}
     ]
 });
@@ -82,4 +82,226 @@ Mock.mock(AppConfig.ApiConfig.getMemberListById,{
             'name' : MockRandom.csentence(Math.random()*2+1)
         }
     ]
-})
+});
+
+Mock.mock(AppConfig.ApiConfig.getNumDetail ,{
+    'status' : 0,
+    'data' : [
+        {   
+            'name' : '命运数',
+            'infoList' : [
+                {
+                    'id' : '@string',
+                    'num' : 1 ,
+                    'desc' : MockRandom.csentence(5),
+                    'natureAdv' : MockRandom.csentence(5),
+                    'natureWeak' : MockRandom.csentence(5),
+                    'details' : [
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)}
+                    ]
+                },
+                {
+                    'id' : '@string',
+                    'num' : 2 ,
+                    'desc' : MockRandom.csentence(5),
+                    'natureAdv' : MockRandom.csentence(5),
+                    'natureWeak' : MockRandom.csentence(5),
+                    'details' : [
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)}
+                    ]
+                }
+            ]
+        },
+        {   
+            'name' : '天赋数',
+            'infoList' : [
+                {
+                    'id' : '@string',
+                    'num' : 1 ,
+                    'keyword' : MockRandom.csentence(5),
+                    'details' : [
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)}
+                    ]
+                },
+                {
+                    'id' : '@string',
+                    'num' : 2 ,
+                    'keyword' : MockRandom.csentence(5),
+                    'details' : [
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)}
+                    ]
+                },
+                {
+                    'id' : '@string',
+                    'num' : 2 ,
+                    'keyword' : MockRandom.csentence(5),
+                    'details' : [
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)}
+                    ]
+                },
+                {
+                    'id' : '@string',
+                    'num' : 2 ,
+                    'keyword' : MockRandom.csentence(5),
+                    'details' : [
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)}
+                    ]
+                },
+                {
+                    'id' : '@string',
+                    'num' : 2 ,
+                    'keyword' : MockRandom.csentence(5),
+                    'details' : [
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)}
+                    ]
+                },
+                {
+                    'id' : '@string',
+                    'num' : 2 ,
+                    'keyword' : MockRandom.csentence(5),
+                    'details' : [
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)}
+                    ]
+                },
+                {
+                    'id' : '@string',
+                    'num' : 2 ,
+                    'keyword' : MockRandom.csentence(5),
+                    'details' : [
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)}
+                    ]
+                },
+                {
+                    'id' : '@string',
+                    'num' : 2 ,
+                    'keyword' : MockRandom.csentence(5),
+                    'details' : [
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)}
+                    ]
+                },
+                {
+                    'id' : '@string',
+                    'num' : 2 ,
+                    'keyword' : MockRandom.csentence(5),
+                    'details' : [
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)}
+                    ]
+                },
+                {
+                    'id' : '@string',
+                    'num' : 2 ,
+                    'keyword' : MockRandom.csentence(5),
+                    'details' : [
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)},
+                        { 'id' : '@string' , 'content' : MockRandom.csentence(20)}
+                    ]
+                }
+            ]
+        }
+    ]
+});

@@ -14,6 +14,12 @@ export default class Map extends Component{
 			map = new AMap.Map('map', {
 			resizeEnable: true
 		});
+
+		AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.OverView'],
+			function(){
+				map.addControl(new AMap.ToolBar());
+		});
+		
 		// map.plugin('AMap.Geolocation', function() {
 		// 	geolocation = new AMap.Geolocation({
 		// 		enableHighAccuracy: true,//是否使用高精度定位，默认:true

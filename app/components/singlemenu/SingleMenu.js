@@ -53,8 +53,8 @@ export default class SingleMenu extends Component{
 	render(){
 		return (
 				<div className={this.state.collapse ? 'sider-wrap sider-wrap-collapse' : 'sider-wrap'}>
-					<div className="collapse-menu-wrap">
-						<div onClick={this.onMenuCollapse} className={this.state.collapse ? 'collapse' : ''}></div>
+					<div className="collapse-menu-wrap" onClick={this.onMenuCollapse}>
+						<div  className={this.state.collapse ? 'collapse' : ''}></div>
 					</div>
 					<div className="menu-list">
 						{

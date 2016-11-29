@@ -19,18 +19,16 @@ const columns = [
 		}
 		return str;
 	}},
-	{ title :'微信昵称', dataIndex:'wechatNickname' , width : 120 , render : value => <a title={value}>{value}</a> },
 	{ title : '签到状态', dataIndex:'checkInStatus' ,width : 120 , render : value => <div className={value == 1 ? 'check' : value== 0 ? 'uncheck' : ''}></div> },
-	{ title : '性别', dataIndex : 'sex' , width : 120 , render : value =>  value== 0 ? '男' : value==1 ? '女' : ''},
+	{ title : '性别', dataIndex : 'sex' , width : 120 , render : value =>  value== 1 ? '男' : value==2 ? '女' : ''},
 	{ title : '微信号', 	dataIndex : 'wechatId' ,width : 120 , render : value => <a title={value}>{value}</a>},
-	{ title : '所在省市', dataIndex : 'province' , width : 120},
-	{ title : '所在区县' , dataIndex : 'distict' ,width : 120},
+	{ title : '地址', dataIndex : 'address' , width : 120},
 	{ title : '工作单位' , dataIndex : 'company' ,width : 120 ,render : value => <a title={value}>{value}</a>},
 	{ title : '职位' , dataIndex : 'job' ,width:120 ,render : value => <a title={value}>{value}</a>},
 	{ title : '学历' , dataIndex : 'educational' ,width : 120},
 	{ title : '疾病记录' , dataIndex : 'diseaseRecord' ,width : 120 , render : value => <a title={value}>{value}</a>},
-	{ title : '茶道课程' , dataIndex : 'teaCeremony' ,width : 120 , render : value => <a title={value}>{value}</a>},
-	{ title : '喜悦活动' , dataIndex : 'xiyueActive' ,width : 120 ,render : value => <a title={value}>{value}</a> }
+	{ title : '茶道课程' , dataIndex : 'teaCeremony' ,width : 120 , render : value => <a title={value}>{value == 1 ? '是' : '否' }</a>},
+	{ title : '喜悦活动' , dataIndex : 'xiyueActive' ,width : 120 ,render : value => <a title={value}>{value == 1 ? '是' : '否'}</a> }
 ];
 
 const data = [];
@@ -74,6 +72,11 @@ export default class Detail extends Component{
 	}
 
 	onExportToExcel(){
+		const location = hashHistory.getCurrentLocation()
+		let id = location.state.record.id
+		// DataStore.exportToExcel({id : id}).then( () => console.log("export success"));
+
+		window.location.href = "http://www.ldted.com/services/ExcelServlet?" + 'key=' + JSON.stringify({id : id});
 
 	}
 	componentDidMount() {
